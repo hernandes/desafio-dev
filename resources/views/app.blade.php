@@ -7,8 +7,11 @@
         <title>Laravel</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="app"></div>
+
+        <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>
