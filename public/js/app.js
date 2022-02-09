@@ -15059,15 +15059,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Transactions_List__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Transactions/List */ "./resources/js/Pages/Transactions/List.vue");
 /* harmony import */ var _Transactions_Import__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Transactions/Import */ "./resources/js/Pages/Transactions/Import.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
     expose();
+    var transactions = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(null);
+
+    function onImport() {
+      transactions.value.fetch();
+    }
+
     var __returned__ = {
+      transactions: transactions,
+      onImport: onImport,
       Transactions: _Transactions_List__WEBPACK_IMPORTED_MODULE_0__["default"],
-      TransactionImport: _Transactions_Import__WEBPACK_IMPORTED_MODULE_1__["default"]
+      TransactionImport: _Transactions_Import__WEBPACK_IMPORTED_MODULE_1__["default"],
+      ref: vue__WEBPACK_IMPORTED_MODULE_2__.ref
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -15163,7 +15174,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
-    expose();
     var loading = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(false);
     var stores = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)([]);
     (0,vue__WEBPACK_IMPORTED_MODULE_1__.onMounted)(function () {
@@ -15182,6 +15192,9 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
 
+    expose({
+      fetch: fetch
+    });
     var __returned__ = {
       loading: loading,
       stores: stores,
@@ -15214,7 +15227,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TransactionImport"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Transactions"])], 64
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["TransactionImport"], {
+    onImported: $setup.onImport
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Transactions"], {
+    ref: "transactions"
+  }, null, 512
+  /* NEED_PATCH */
+  )], 64
   /* STABLE_FRAGMENT */
   );
 }

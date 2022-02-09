@@ -57,4 +57,8 @@ function fetch() {
             loading.value = false;
         });
 }
+
+defineExpose({
+    fetch
+})
 </script>
