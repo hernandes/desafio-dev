@@ -1,5 +1,5 @@
 <template>
-    <div class="transactions__list" v-if="!loading">
+    <div class="transactions__list" v-if="!loading && stores.length > 0">
         <h1>Transações</h1>
         <div class="transactions__list-store" v-for="store in stores">
             <h3>{{ store.store.name }} ({{ store.store.owner }})</h3>

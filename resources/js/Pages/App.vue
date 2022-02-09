@@ -1,6 +1,9 @@
 <template>
     <div class="transactions">
         <TransactionImport @imported="onImport" />
+
+        <hr>
+
         <Transactions ref="transactions" />
     </div>
 </template>

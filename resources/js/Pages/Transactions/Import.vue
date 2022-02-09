@@ -23,7 +23,6 @@ const loading = ref(false);
 const form = reactive({
     file: null
 });
-
 const emit = defineEmits(["imported"]);
 
 function onSend() {
@@ -39,6 +38,7 @@ function onSend() {
     })
     .catch(error => {
         loading.value = false;
+        alert(error);
     })
 }
 

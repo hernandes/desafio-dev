@@ -26,6 +26,10 @@ h1 {
     margin-bottom: .5rem;
 }
 
+hr {
+    margin: 1rem 0;
+}
+
 .transactions {
     background-color: var(--white-color);
     width: 70%;
@@ -39,7 +43,6 @@ h1 {
 }
 
 .transactions__list {
-    margin-top: 1rem;
 }
 
 .transactions__table {
