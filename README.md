@@ -25,6 +25,9 @@
 - Comando: php artisan serve
 - Navegador: http://127.0.0.1:8000
 
+# Testes
+- Comando: ./vendor/bin/phpunit
+
 # API
 *GET: `/api/transactions`*
 > Retorna as trasações agrupadas por loja e o saldo.
