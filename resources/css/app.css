@@ -1,0 +1,128 @@
+:root {
+    --primary-color: #0276FF;
+    --accent-color: #fff;
+    --shadow-color: #ddd;
+    --danger-color: red;
+    --success-color: green;
+    --border-color: #ddd;
+    --background-color: #eaeaea;
+    --white-color: #fff;
+    --border-radius: 4px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    background: var(--background-color);
+}
+
+h1 {
+    margin-bottom: .5rem;
+}
+
+.transactions {
+    background-color: var(--white-color);
+    width: 70%;
+    margin: 5rem auto 0;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    box-shadow: 0 1px 10px var(--shadow-color);
+}
+
+.transactions__import {
+}
+
+.transactions__list {
+    margin-top: 1rem;
+}
+
+.transactions__table {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+    box-shadow: 0 0 20px var(--shadow-color);
+    border-collapse: collapse;
+}
+
+.transactions__table thead tr {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+}
+
+.transactions__table th {
+    text-align: left;
+}
+
+.transactions__table th, .transactions__table td {
+    padding: 12px 15px;
+}
+
+.transactions__table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.transactions__table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.button {
+    align-items: center;
+    border-radius: var(--border-radius);
+    border: none;
+    color: var(--white-color);
+    cursor: pointer;
+    padding: .5rem 1rem;
+    text-align: center;
+    transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.button__primary {
+    background-color: var(--primary-color);
+}
+
+.button__accent {
+    background-color: var(--accent-color);
+}
+
+.button:hover, .button:active {
+    filter: brightness(0.85);
+}
+
+.form__label {
+    display: block;
+    margin-bottom: .5rem;
+}
+
+.form__required .form__label::after {
+    content: '*';
+    margin-left: .3rem;
+    color: var(--danger-color);
+}
+
+.form__submit {
+    margin-top: 1rem
+}
+
+.text__center {
+    text-align: center!important;
+}
+
+.text__right {
+    text-align: right!important;
+}
+
+.color__danger {
+    color: var(--danger-color);
+}
+
+.color__success {
+    color: var(--success-color);
+}

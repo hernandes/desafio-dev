@@ -1,30 +1,35 @@
 <template>
-    <div class="stores">
-        <div class="store" v-for="store in stores">
-            <h1>{{ store.store.name }} ({{ store.store.owner }})</h1>
-            <table class="table">
+    <div class="transactions__list" v-if="!loading">
+        <h1>Transações</h1>
+        <div class="transactions__list-store" v-for="store in stores">
+            <h3>{{ store.store.name }} ({{ store.store.owner }})</h3>
+            <table class="transactions__table">
                 <thead>
                     <tr>
                         <th>Tipo</th>
                         <th>Data</th>
                         <th>CPF</th>
                         <th>Cartão</th>
-                        <th>Valor</th>
+                        <th class="text__right">Valor</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <tr v-for="transaction in store.transactions">
                         <td>{{ transaction.type_name }}</td>
-                        <td>{{ transaction.transaction_at }}</td>
+                        <td>{{ to_datetime(transaction.transaction_at) }}</td>
                         <td>{{ transaction.document }}</td>
                         <td>{{ transaction.card }}</td>
-                        <td>{{ transaction.value }}</td>
+                        <td class="text__right" :class="{'color__danger': transaction.value < 0, 'color__success': transaction.value > 0}">
+                            {{ to_currency(transaction.value) }}
+                        </td>
                     </tr>
 
                     <tr>
-                        <td colspan="4">Total</td>
-                        <td>{{ store.sum }}</td>
+                        <td colspan="4" class="text__right"><strong>Total</strong></td>
+                        <td class="text__right" :class="{'color__danger': store.sum < 0, 'color__success': store.sum > 0}">
+                            <strong>{{ to_currency(store.sum) }}</strong>
+                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -36,6 +41,8 @@
 <script setup>
 import axios from "axios";
 import {ref, onMounted} from "vue";
+import currency from "currency.js";
+import moment from "moment";
 
 const loading = ref(false);
 const stores = ref([]);
@@ -56,6 +63,14 @@ function fetch() {
         .catch(error => {
             loading.value = false;
         });
+}
+
+function to_datetime(value) {
+    return moment(value).format("DD/MM/YYYY HH:mm");
+}
+
+function to_currency(value) {
+    return currency(value, { separator: ".", decimal: ",", symbol: "" }).format();
 }
 
 defineExpose({

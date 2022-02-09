@@ -1,6 +1,8 @@
 <template>
-    <TransactionImport @imported="onImport" />
-    <Transactions ref="transactions" />
+    <div class="transactions">
+        <TransactionImport @imported="onImport" />
+        <Transactions ref="transactions" />
+    </div>
 </template>
 
 <script setup>

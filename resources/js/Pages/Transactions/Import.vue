@@ -3,7 +3,7 @@
         <h1>Importar arquivo CNAB</h1>
 
         <form @submit.prevent="onSend" class="form">
-            <div class="form__group">
+            <div class="form__group form__required">
                 <label for="file" class="form__label">Arquivo</label>
                 <input type="file" @change="onFile" id="file" required class="form__input" />
             </div>
