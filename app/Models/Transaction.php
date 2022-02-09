@@ -71,9 +71,7 @@ class Transaction extends Model
 
     protected function typeName(): Attribute
     {
-        return new Attribute(
-            get: fn ($data, $attributes) => static::$types[$attributes['type']]['name']
-        );
+        return new Attribute(fn ($data, $attributes) => static::$types[$attributes['type']]['name']);
     }
 
     public static function cnab(): Cnab
