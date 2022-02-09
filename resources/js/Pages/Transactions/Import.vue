@@ -5,7 +5,7 @@
         <form @submit.prevent="onSend" class="form">
             <div class="form__group form__required">
                 <label for="file" class="form__label">Arquivo</label>
-                <input type="file" @change="onFile" id="file" required class="form__input" />
+                <input type="file" @change="onFile" id="file" class="form__input" />
             </div>
 
             <div class="form__submit">
@@ -38,7 +38,11 @@ function onSend() {
     })
     .catch(error => {
         loading.value = false;
-        alert(error);
+        if (error.response.status === 422) {
+            alert(error.response.data.message);
+        } else {
+            alert(error);
+        }
     })
 }
 

@@ -15128,7 +15128,12 @@ __webpack_require__.r(__webpack_exports__);
         emit("imported", data);
       })["catch"](function (error) {
         loading.value = false;
-        alert(error);
+
+        if (error.response.status === 422) {
+          alert(error.response.data.message);
+        } else {
+          alert(error);
+        }
       });
     }
 
@@ -15314,7 +15319,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     type: "file",
     onChange: $setup.onFile,
     id: "file",
-    required: "",
     "class": "form__input"
   }, null, 32
   /* HYDRATE_EVENTS */
