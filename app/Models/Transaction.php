@@ -88,7 +88,7 @@ class Transaction extends Model
                 'id' => 'data',
                 'start' => 1,
                 'length' => 8,
-                'handle' => fn ($data) => Carbon::createFromFormat('Ymd', $data)
+                'handle' => fn ($data) => Carbon::createFromFormat('Ymd', $data)->format('Y-m-d')
             ], [
                 'id' => 'valor',
                 'start' => 9,
@@ -134,7 +134,7 @@ class Transaction extends Model
 
                 static::query()->create([
                     'type' => $t['tipo'],
-                    'transaction_at' => $t['data']->format('Y-m-d') . ' ' . $t['hora'],
+                    'transaction_at' => $t['data'] . ' ' . $t['hora'],
                     'value' => $t['valor'],
                     'document' => $t['cpf'],
                     'card' => $t['cartao'],
