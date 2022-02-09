@@ -12,13 +12,15 @@
   - XML PHP Extensio
 
 # Instalação
-- Comandos
+- Clonar repositório
+- Navegar até a pasta do projeto
+- Executar
   - composer install
   - cp .env.example .env
   - php artisan key:generate
-- Configuração
+- Configurar
   - editar arquivo .env com dados do banco de dados
-- Comando
+- Executar
   - php artisan migrate
 
 # Execução
