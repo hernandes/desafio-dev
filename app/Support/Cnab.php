@@ -7,7 +7,7 @@ use RuntimeException;
 class Cnab
 {
 
-    private $template = [];
+    private array $template = [];
 
     public function template(array $template): self
     {
