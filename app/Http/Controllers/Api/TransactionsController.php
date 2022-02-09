@@ -22,7 +22,7 @@ class TransactionsController extends Controller
     public function import(Request $request): JsonResponse
     {
         $request->validate([
-            'file' => ['required']
+            'file' => ['required', 'max:1000', 'mimes:txt']
         ]);
 
         $file = $request->file('file');
