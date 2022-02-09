@@ -36,7 +36,7 @@ class Cnab
             $columns = [];
             foreach ($this->template as $template) {
                 $data = substr($line, $template['start'], $template['length']);
-                $data = isset($template['handle']) ? $template['handle']($data) : trim($data);
+                $data = isset($template['handle']) ? $template['handle']($data, $columns) : trim($data);
                 $columns[$template['id'] ?? $template['label']] = $data;
             }
 

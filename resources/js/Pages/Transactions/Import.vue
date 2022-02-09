@@ -1,29 +1,48 @@
 <template>
+    <div class="transactions__import">
+        <h1>Importar arquivo CNAB</h1>
 
+        <form @submit.prevent="onSend" class="form">
+            <div class="form__group">
+                <label for="file" class="form__label">Arquivo</label>
+                <input type="file" @change="onFile" id="file" required class="form__input" />
+            </div>
+
+            <div class="form__submit">
+                <button type="submit" :disabled="loading" class="button button__primary">Importar</button>
+            </div>
+        </form>
+    </div>
 </template>
 
 <script setup>
 import axios from "axios";
-import {ref, onMounted} from "vue";
+import {ref, reactive} from "vue";
 
 const loading = ref(false);
-const transactions = ref([]);
+const form = reactive({
+    file: null
+});
 
-onMounted(() => {
-    fetch();
-})
+const emit = defineEmits(["imported"]);
 
-function fetch() {
-    const url = '/api/transactions';
-
+function onSend() {
     loading.value = true;
-    axios.get(url)
+
+    const url = "/api/transactions/import";
+    const data = new FormData();
+    data.append("file", form.file);
+    axios.post(url, data)
     .then(({ data }) => {
-        loading.value = false;
-        transactions.value = data.transaction;
+        loading.value = false
+        emit("imported", data);
     })
     .catch(error => {
         loading.value = false;
-    });
+    })
+}
+
+function onFile(e) {
+    form.file = e.target.files[0];
 }
 </script>
